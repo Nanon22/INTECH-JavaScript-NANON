@@ -3,16 +3,36 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Démineur</title>
-    <link rel="stylesheet" href="style.sass">
-    <script type="text/javascript" src="demineur.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+
+    </style>
 	</head>
 
-	<body>
+	<body >
     <h1 class="center">Démineur</h1>
-    <select name="level" id="level">
-      <option value="1">Easy</option>
-      <option value="2">Medium</option>
-      <option value="3">Hard</option>
-    </select>
+    <div class="center">
+      <div class="flex-centered">
+        <select class="btn-margin" name="level" id="level">
+          <option value="1">Easy</option>
+          <option value="2">Medium</option>
+          <option value="3">Hard</option>
+        </select>
+    
+        <button class="btn-margin">Rejouer</button>
+      </div>
+  
+      <div class="flex-centered">
+        <p class="btn-margin">Time : 0:00</p>
+    
+        <button class="btn-margin">Pause</button>
+      </div>
+    </div>
+    <div id="game-container">
+      
+    </div>
+    <h1 id="message" class="center"></h1>
 	</body>
+  <script type="text/javascript" src="demineur.js"></script>
 </html>

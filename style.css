@@ -1,0 +1,33 @@
+body {
+  text-align: center;
+}
+
+.center {
+  text-align: center
+}
+
+.center-vertival {
+  vertical-align: center;
+}
+.flex {
+  display: flex;
+}
+
+.flex-centered {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+.btn-margin {
+  margin: 10px 10px 10px 10px;
+}
+
+#game-container {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+}
+
