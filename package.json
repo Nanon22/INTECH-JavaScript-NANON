@@ -1,0 +1,22 @@
+{
+  "name": "examjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "demineur.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nanon22/INTECH-JavaScript-NANON.git"
+  },
+  "keywords": [
+    "nanon"
+  ],
+  "author": "nanon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nanon22/INTECH-JavaScript-NANON/issues"
+  },
+  "homepage": "https://github.com/Nanon22/INTECH-JavaScript-NANON#readme"
+}
