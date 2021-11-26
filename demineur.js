@@ -3,11 +3,16 @@ const caseValue = ['.', '1', '2', '3', 'B']
 let minute = 0
 let second = 0
 
-let firstClick = false;
+let intervalId = 0;
+
+let firstClick = true;
 
 function Init()  {
+
   let gameContainer = document.querySelector('#game-container');
   let message = document.querySelector('#message');
+
+  gameContainer.addEventListener("click", firstClickAction, false);
 
   gameContainer.innerText = '';
   message.innerText = '';
@@ -37,7 +42,7 @@ function Init()  {
   }
 }
 
-function startCounter() {
+function Count() {
   if(second === 59) {
     minute += 1;
     second = 0
@@ -46,11 +51,32 @@ function startCounter() {
   }
 }
 
+function Stop() {
+  firstClick = true;
+  let gameContainer = document.querySelector('#game-container');
+  gameContainer.addEventListener("click", firstClickAction, false);
+  clearInterval(intervalId);
+}
+
 function addFlag(event) {
   event.target.setAttribute('data-value', 'F')
   event.target.innerText = 'F'
   event.target.style.color = 'red';
   event.preventDefault();
+}
+
+function firstClickAction(event) {
+  if(event.target.dataset.value != 'B') {
+    if(firstClick) {
+      intervalId = setInterval(() => {
+        Count();
+        let counter = document.querySelector('#counter');
+  
+        counter.innerText = minute + ':' + (second > 9 ? second : '0' + second);
+        firstClick = false;
+      }, 1000);
+    }
+  }
 }
 
 function discoverOnClick(event) {
@@ -61,6 +87,8 @@ function discoverOnClick(event) {
   if (value === 'F') {
     
   } else if(value === 'B') {
+    
+    Stop()
 
     let gameContainer = document.querySelector('#game-container');
 
@@ -72,6 +100,7 @@ function discoverOnClick(event) {
         element.style.backgroundColor = 'white'
       } else if (elementValue === 'B') {
         element.style.backgroundColor = 'red'
+        clearInterval()
       } else {
         element.style.backgroundColor = 'white'
       }
