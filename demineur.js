@@ -2,9 +2,9 @@ const easy = ['.', '.', '.', '.', '.', 'B']
 const medium = ['.', '.', '.', '.', '.', 'B', 'B']
 const hard = ['.', '.', '.', '.', '.', 'B', 'B', 'B']
 
-let easySize = 6
-let mediumSize = 10
-let hardSize = 15
+let easySize = 4
+let mediumSize = 8
+let hardSize = 12
 
 let minute = 0
 let second = 0
@@ -140,6 +140,8 @@ function discoverOnClick(event) {
       intervalId = setInterval(() => {
         Start()
       }, 1000);
+    } else {
+      event.target.dataset.value = 
     }
   }
   
