@@ -140,9 +140,7 @@ function discoverOnClick(event) {
       intervalId = setInterval(() => {
         Start()
       }, 1000);
-    } else {
-      event.target.dataset.value = 
-    }
+    } 
   }
   
   
