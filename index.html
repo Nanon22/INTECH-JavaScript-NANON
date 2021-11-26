@@ -12,7 +12,7 @@
 
 	<body >
     <h1 class="center">Démineur</h1>
-    <div class="center">
+    <div class="container">
       <div class="flex-centered">
         <select class="btn-margin" name="level" id="level">
           <option value="1">Easy</option>
@@ -20,18 +20,20 @@
           <option value="3">Hard</option>
         </select>
     
-        <button class="btn-margin">Rejouer</button>
+        <button class="btn-margin" onclick="Init()">Rejouer</button>
       </div>
   
       <div class="flex-centered">
-        <p class="btn-margin">Time : 0:00</p>
+        <p class="btn-margin" id="counter">Time : 0:00</p>
     
         <button class="btn-margin">Pause</button>
       </div>
     </div>
-    <div id="game-container">
+    <center>
+      <div id="game-container">
       
-    </div>
+      </div>
+    </center>
     <h1 id="message" class="center"></h1>
 	</body>
   <script type="text/javascript" src="demineur.js"></script>

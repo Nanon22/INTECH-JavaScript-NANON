@@ -1,15 +1,22 @@
 const caseValue = ['.', '1', '2', '3', 'B']
 
+let minute = 0
+let second = 0
+
+let firstClick = false;
+
 function Init()  {
   let gameContainer = document.querySelector('#game-container');
+  let message = document.querySelector('#message');
 
   gameContainer.innerText = '';
+  message.innerText = '';
   
-  let dimension = (gameContainer.clientWidth / 15) - 2;
+  let dimension = (gameContainer.clientWidth / 6) - 2;
   
   gameContainer.innerHTML = '';
-  for(let i = 0; i < 15; i++) {
-    for(let j = 0; j < 15; j++) {
+  for(let i = 0; i < 6; i++) {
+    for(let j = 0; j < 6; j++) {
       let newDiv = document.createElement('div');
 
       let value = caseValue[getRandomInt(0,5)];
@@ -27,6 +34,15 @@ function Init()  {
       
       gameContainer.insertAdjacentElement('beforeend', newDiv)
     }
+  }
+}
+
+function startCounter() {
+  if(second === 59) {
+    minute += 1;
+    second = 0
+  } else {
+    second += 1;
   }
 }
 
@@ -70,7 +86,12 @@ function discoverOnClick(event) {
   }
 }
 
-function discoverAdjacentCase(element) {
+function discoverAdjacentCase(element, passed=[]) {
+  passed.push(element);
+
+  element.style.backgroundColor = 'white';
+  element.innerText = element.dataset.value;
+
   let pos = element.dataset.pos.split(' ');
   let X = parseInt(pos[0]);
   let Y = parseInt(pos[1]);
@@ -80,31 +101,24 @@ function discoverAdjacentCase(element) {
     document.querySelector("[data-pos='" + (X - 1) + " " + (Y) + "']"),
     document.querySelector("[data-pos='" + (X - 1) + " " + (Y + 1) + "']"),
     document.querySelector("[data-pos='" + (X) + " " + (Y - 1) + "']"),
-    document.querySelector("[data-pos='" + (X) + " " + (Y) + "']"),
     document.querySelector("[data-pos='" + (X) + " " + (Y + 1) + "']"),
     document.querySelector("[data-pos='" + (X + 1) + " " + (Y - 1) + "']"),
     document.querySelector("[data-pos='" + (X + 1) + " " + (Y) + "']"),
     document.querySelector("[data-pos='" + (X + 1) + " " + (Y + 1) + "']"),
   ];
 
-  console.log(X + " " + Y );
-  console.dir(adjacents);
-
-  for(let i = 0; i < adjacents.length; i++) {
-    let el = adjacents[i];
-    if(el != null) {
+  adjacents.forEach(el => {
+    if(el != null && !passed.includes(el)) {
       let value = el.dataset.value
 
       if(value === '.') {
-        el.style.backgroundColor = 'white';
-        el.innerText = value;
-        discoverAdjacentCase(el);
+        discoverAdjacentCase(el, passed);
       } else if (value === '1' || value === '2' || value === '3') {
         el.innerText = value;
         el.style.backgroundColor = 'white';
       }
     }
-  }
+  })
   
 }
 
