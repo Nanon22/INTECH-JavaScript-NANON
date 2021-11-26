@@ -11,11 +11,15 @@ function Init()  {
 
   let gameContainer = document.querySelector('#game-container');
   let message = document.querySelector('#message');
-
-  gameContainer.addEventListener("click", firstClickAction, false);
+  let counter = document.querySelector('#counter');
 
   gameContainer.innerText = '';
   message.innerText = '';
+  counter.innerText = '0:00';
+  Stop();
+
+  minute = 0
+  second = 0
   
   let dimension = (gameContainer.clientWidth / 6) - 2;
   
@@ -53,8 +57,6 @@ function Count() {
 
 function Stop() {
   firstClick = true;
-  let gameContainer = document.querySelector('#game-container');
-  gameContainer.addEventListener("click", firstClickAction, false);
   clearInterval(intervalId);
 }
 
@@ -65,9 +67,12 @@ function addFlag(event) {
   event.preventDefault();
 }
 
-function firstClickAction(event) {
-  if(event.target.dataset.value != 'B') {
-    if(firstClick) {
+function discoverOnClick(event) {
+  let value = event.target.dataset.value
+  event.target.innerText = value
+
+  if(firstClick) {
+    if(value != 'B') {
       intervalId = setInterval(() => {
         Count();
         let counter = document.querySelector('#counter');
@@ -77,11 +82,6 @@ function firstClickAction(event) {
       }, 1000);
     }
   }
-}
-
-function discoverOnClick(event) {
-  let value = event.target.dataset.value
-  event.target.innerText = value
   
   
   if (value === 'F') {
