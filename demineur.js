@@ -42,7 +42,6 @@ function Init()  {
   
   let dimension = (gameContainer.clientWidth / size) - 2;
   
-  gameContainer.innerHTML = '';
   for(let i = 0; i < size; i++) {
     for(let j = 0; j < size; j++) {
       let newDiv = document.createElement('div');
@@ -214,7 +213,7 @@ function discoverAdjacentCase(element, passed=[]) {
 
       if(value === '.') {
         discoverAdjacentCase(el, passed);
-      } else if (value === '1' || value === '2' || value === '3') {
+      } else if (value !== 'B' && value !== 'F') {
         el.innerText = value;
         el.style.backgroundColor = 'white';
       }
